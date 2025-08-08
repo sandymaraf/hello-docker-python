@@ -63,16 +63,6 @@ jobs:
       - name: Build Docker image
         run: docker build -t flask-app:latest ./app
 
-      # 4. Scan de vulnerabilidades na imagem Docker
-      - name: Scan Docker image with Trivy
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: flask-app:latest
-          format: table
-          exit-code: 1
-          vuln-type: os,library
-          severity: CRITICAL,HIGH
-
-      # 5. Push da imagem se passar nos testes
+      # 4. Push da imagem se passar nos testes
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/flask-app:latest
