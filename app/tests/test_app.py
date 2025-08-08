@@ -1,2 +1,4 @@
 def test_sample():
-    assert 1 + 1 == 2
+    result = 1 + 1
+    expected = 2
+    assert result == expected
